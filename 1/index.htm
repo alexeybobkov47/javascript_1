@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Урок №1</title>
+    <!----
+     <script src="script.js"></script> -->
+    <script src="task-1.js"></script>
+
+
+</head>
+
+<body>
+    <h1>Урок №1</h1>
+    <script>
+        var name = "Василий";
+        var admin = "Колян";
+        admin = name;
+        alert("3. " + admin);
+    </script>
+    <script>
+        a = 1000 + "108"
+        document.write("<h3 style= 'color:blue';> 4. a равен: " + a + " Происходит склеивание</h3>")
+    </script>
+
+    <script>
+        var a = 36;
+        var b = 17;
+        document.write("2. Было: a = " + a + ", b = " + b);
+
+        a = a + b;
+        b = a - b;
+        a = a - b;
+
+        document.write("</br>Стало: a = " + a + ", b = " + b);
+    </script>
+
+    <h3>5. У async нет порядка, кто первый загрузится тот и запустится. Так же о не ждет когда прогрузится весь html</h3>
+</body>
+
+</html>
