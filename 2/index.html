@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        document.write("<br> 1зд. ");
+        var a = 1,
+            b = 1,
+            c, d;
+        c = ++a;
+        document.write(c + " "); // 2 Сначала прибавка к а
+        d = b++;
+        document.write(d + " "); // 1 Присвоение, потом прибавка
+        c = (2 + ++a);
+        document.write(c + " "); // 5 Прибавка к а(уже будет 3) и потом сложение
+        d = (2 + b++);
+        document.write(d + " "); // 4 Сложение 2 с b(он уже 2) потом прибавка к b (будет 3)
+        document.write(a + " "); // 3
+        document.write(b + " "); // 3
+    </script>
+
+    <script>
+        document.write("<br> 2зд. ");
+        var a = 3;
+        var x = 1 + (a *= 2); // a = a * 2, x = 1 + a * 2, сначала умножение, потом сложение и в конце присваивание
+        document.write(x);
+    </script>
+
+
+    <script>
+        document.write("<br> 3зд. ");
+
+        function Random(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+
+        var a = Random(-15, 15),
+            b = Random(-15, 15);
+        if (a > 0 && b > 0) {
+            c = a - b;
+            document.write("a: " + a + " и b: " + b + " положительные и их разность: " + c);
+        } else if (a < 0 && b < 0) {
+            c = a * b;
+            document.write("a: " + a + " и b: " + b + " отрицательные и их произведение: " + c);
+        } else if (a < 0 && b >= 0 || a >= 0 && b < 0) {
+            c = a + b;
+            document.write("a: " + a + " и b: " + b + " разных знаков и их сумма: " + c);
+        }
+    </script>
+
+
+    <script>
+        document.write("<br> 4зд. ");
+        var a = Random(0, 15);
+        document.write("<br>a: " + a + " <br>");
+        switch (a) {
+            case 0:
+                document.write(" 0");
+            case 1:
+                document.write(" 1");
+            case 2:
+                document.write(" 2");
+            case 3:
+                document.write(" 3");
+            case 4:
+                document.write(" 4");
+            case 5:
+                document.write(" 5");
+            case 6:
+                document.write(" 6");
+            case 7:
+                document.write(" 7");
+            case 8:
+                document.write(" 8");
+            case 9:
+                document.write(" 9");
+            case 10:
+                document.write(" 10");
+            case 11:
+                document.write(" 11");
+            case 12:
+                document.write(" 12");
+            case 13:
+                document.write(" 13");
+            case 14:
+                document.write(" 14");
+            case 15:
+                document.write(" 15");
+
+        }
+    </script>
+
+    <script>
+        document.write("<br> 5зд. сделаны функции a=2, b=3 ");
+
+        function summ(a, b) {
+            return a + b;
+        }
+        document.write("<br> summ: " + summ(2, 3));
+
+        function multiplication(a, b) {
+            return a * b;
+        }
+        document.write("<br> multiplacation: " + multiplication(2, 3));
+
+        function division(a, b) {
+            return a / b;
+        }
+        document.write("<br> division: " + division(2, 3));
+
+        function subtraction(a, b) {
+            return a - b;
+        }
+        document.write("<br> subtraction: " + subtraction(2, 3));
+    </script>
+
+
+    <script>
+        document.write("<br> 6зд. ");
+
+        function mathOperation(a, b, operation) {
+            switch (operation) {
+                case "-":
+                    return subtraction(a, b);
+                case "*":
+                    return multiplication(a, b);
+                case "+":
+                    return summ(a, b);
+                case "/":
+                    return division(a, b);
+            }
+        }
+        document.write("<br>(1, 2, '-'): " + mathOperation(1, 2, '-'));
+        document.write("<br>(3, 5, '*'): " + mathOperation(3, 5, '*'));
+        document.write("<br>(5, 3, '+'): " + mathOperation(5, 3, '+'));
+        document.write("<br>(10, 5, '/'): " + mathOperation(10, 5, '/'));
+        document.write("<br>(1, 2, '+'): " + mathOperation(1, 2, '+'));
+    </script>
+
+    <script>
+        document.write("<br> 7зд. "); // Если смотреть эту статью https://habr.com/ru/company/ruvds/blog/337732/ в которой я мало, что понял, то так работает алгорит сравнения =) При преобразовании null к типу number = +0, поэтому при null > 0 и null < 0 - false. 
+        document.write("<br> " + (null > 0));
+        document.write("<br>" + (null >= 0)); // А так как null > 0 и null < 0 - false то null >= 0 и null <= 0 - true.
+        document.write("<br>" + (null <= 0));
+        document.write("<br>" + (null < 0));
+    </script>
+
+    <script>
+        document.write("<br> 8зд. "); // Не успел разобрать и сделать задачку.
+        val2 = 1;
+
+        function power(val, pow) {
+            if (pow <= 1) {
+                return;
+            }
+            val = val * val;
+            console.log(val, pow);
+            power(val, (pow - 1));
+
+        }
+        power(3, 3);
+    </script>
+
+</body>
+
+</html>
