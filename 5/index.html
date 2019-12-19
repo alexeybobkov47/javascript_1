@@ -5,12 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <style>
-        #rotare {
-            transform: rotate(180);
-            color: red;
-        }
-    </style>
+
     <title>Document</title>
 
 </head>
@@ -20,50 +15,71 @@
         function CreateTable() {
 
             var rowLetters = ['A', 'B', ' C', 'D', 'E', 'F', 'G', 'H'];
-            var colNumbers = [1, 2, 3, 4, 5, 6, 7, 8];
-            var figureW1 = ['♖', '♘', '♗', '♕', '♔', '♗', '♘', '♖'];
+            var colNumbers = [8, 7, 8, 5, 4, 3, 2, 1];
+            var figureW1 = ['', '♖', '♘', '♗', '♕', '♔', '♗', '♘', '♖', ''];
             var table = document.createElement("table"); // <table></table>
-            table.border = '1';
 
 
 
-            for (var i = 1; i <= 8; i++) {
+
+            for (var i = 1; i <= 10; i++) {
                 var tr = document.createElement('tr');
                 table.appendChild(tr);
 
 
-                for (var j = 1, m = 0; j <= 8, m < 8; j++, m++) {
+                for (var j = 1, m = 0; j <= 10, m < 10; j++, m++) {
                     var td = document.createElement('td');
                     tr.appendChild(td);
 
-                    td.width = "20";
-                    td.height = '20';
+                    td.width = "50";
+                    td.height = '50';
+                    td.style.fontSize = '35px';
                     td.align = 'center';
-                    if (i == 1) {
-                        td.innerHTML = figureW1[m];
-                        td.style.transform = 'rotate(180deg)';
-                    }
                     if (i == 2) {
+                        td.innerHTML = figureW1[m];
+                        td.style.transform = 'rotate(180deg)';
+                    }
+                    if (i == 3 && j != 1 && j != 10) {
                         td.innerHTML = '♙';
                         td.style.transform = 'rotate(180deg)';
                     }
-                    if (i == 8) {
+                    if (i == 9) {
                         td.innerHTML = figureW1[m];
                         td.style.color = 'white';
                     }
-                    if (i == 7) {
+                    if (i == 8 && j != 1 && j != 10) {
                         td.innerHTML = '♙';
                         td.style.color = 'white';
                     }
+                    if (i == 1 && j >= 2 && j <= 9) {
+                        td.innerHTML = rowLetters[m - 1];
+                        td.style.transform = 'rotate(180deg)';
+                    }
+                    if (i == 10 && j >= 2 && j <= 9) {
+                        td.innerHTML = rowLetters[m - 1];
 
-                    if (i % 2 == 0) {
+                    }
+                    if (j == 1 && i >= 2 && i <= 9) {
+                        td.innerHTML = colNumbers[i - 2];
+                        td.style.transform = 'rotate(0deg)';
+                        td.style.color = 'black';
+
+                    }
+                    if (j == 10 && i >= 2 && i <= 9) {
+                        td.innerHTML = colNumbers[i - 2];
+                        td.style.transform = 'rotate(180deg)';
+                        td.style.color = 'black';
+
+                    }
+
+                    if (i % 2 == 0 && i != 1 && i != 10 && j != 1 && j != 10) {
                         if (j % 2 == 0) {
                             td.style.backgroundColor = '#e8c09e';
                         } else {
                             td.style.backgroundColor = '#d47420';
                         }
 
-                    } else {
+                    } else if (i % 2 != 0 && i != 1 && i != 10 && j != 1 && j != 10) {
                         if (j % 2 == 0) {
                             td.style.backgroundColor = '#d47420';
                         } else {
@@ -71,10 +87,10 @@
                         }
 
                     }
-
 
                 }
             }
+
 
             document.body.append(table);
 
