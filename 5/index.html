@@ -5,7 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
 
+    </style>
     <title>Document</title>
 
 </head>
@@ -75,15 +77,20 @@
                     if (i % 2 == 0 && i != 1 && i != 10 && j != 1 && j != 10) {
                         if (j % 2 == 0) {
                             td.style.backgroundColor = '#e8c09e';
+                            td.id = "change1";
+
                         } else {
                             td.style.backgroundColor = '#d47420';
+                            td.id = "change2";
                         }
 
                     } else if (i % 2 != 0 && i != 1 && i != 10 && j != 1 && j != 10) {
                         if (j % 2 == 0) {
                             td.style.backgroundColor = '#d47420';
+                            td.id = "change2";
                         } else {
                             td.style.backgroundColor = '#e8c09e';
+                            td.id = "change1";
                         }
 
                     }
@@ -94,10 +101,32 @@
 
             document.body.append(table);
 
+
         }
-        window.onload = CreateTable;
+
+        function ChangeColor() {
+            var change2 = document.querySelectorAll('#change2')
+            var change1 = document.querySelectorAll('#change1')
+            var r = Math.floor(Math.random() * (256));
+            var g = Math.floor(Math.random() * (256));
+            var b = Math.floor(Math.random() * (256));
+            var c = 'rgba(' + r + ',' + g + ',' + b;
+            console.log(c);
+            for (var i = 0; i < change2.length; i++) {
+                change2[i].style.backgroundColor = c + ',1)';
+            }
+            for (var i = 0; i < change1.length; i++) {
+
+
+                change1[i].style.backgroundColor = c + ',0.5)';
+                //change1[i].style.opacity = '0.5';
+            }
+
+        }
     </script>
 
+    <button onclick="CreateTable()"> Создать шахматную доску </button>
+    <button onclick="ChangeColor()"> Сменить цвет </button><br><br><br>
 
 </body>
 
