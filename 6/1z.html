@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        body {
+            width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .img_s {
+            height: 200px;
+            margin: 10px;
+        }
+        
+        .img_b {
+            height: 600px;
+            width: 1000px;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <img class='img_s' src="media_s/1.jpg">
+    <img class='img_s' src="media_s/2.jpg">
+    <img class='img_s' src="media_s/3.jpg">
+
+    <img class='img_b' id='change_b' onerror="alert('Файл не найден')">
+
+
+    <script>
+        var mas_img_s = document.querySelectorAll(".img_s");
+        for (var i = 0; i < mas_img_s.length; i++) {
+            mas_img_s[i].id = 'mas_img_' + i;
+            mas_img_s[i].onclick = function() {
+                var x = this.id.split("_");
+                document.getElementById('change_b').src = 'media_b/' + parseInt(parseInt(x[2]) + 1) + '.jpg'
+            }
+        }
+    </script>
+
+</body>
+
+</html>

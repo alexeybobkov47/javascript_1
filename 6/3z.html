@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .for-img {
+            width: 800px;
+            height: 500px;
+        }
+        
+        img {
+            max-width: 800px;
+            max-height: 500px;
+        }
+        
+        .arrows {
+            width: 400px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+    </style>
+    <title>Document</title>
+</head>
+
+<body>
+
+    <div class='center'>
+        <div class='for-img'></div>
+        <div class='arrows'></div>
+    </div>
+
+
+    <script>
+        var image = ['media_s/1.jpg', 'media_s/2.jpg', 'media_s/3.jpg']
+        var getimg = document.createElement("img");
+        getimg.src = image[0];
+        document.getElementsByClassName('for-img')[0].appendChild(getimg);
+        var left = document.createElement('img');
+        left.src = 'media_s/left.jpg';
+        var right = document.createElement('img');
+        right.src = 'media_s/right.jpg';
+        document.getElementsByClassName('arrows')[0].append(left);
+        document.getElementsByClassName('arrows')[0].append(right);
+
+
+        left.onclick = function() {
+            image.unshift(image[image.length - 1]);
+            //console.log(image);
+            getimg.src = image.pop();
+            //console.log(image);
+        }
+
+        right.onclick = function() {
+            image.push(image[0]);
+            //console.log(image);
+            getimg.src = image.shift();
+            //console.log(image);
+        }
+    </script>
+</body>
+
+</html>
