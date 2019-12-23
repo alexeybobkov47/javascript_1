@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+
+    </style>
+    <title>Document</title>
+
+</head>
+
+<body>
+    <script>
+        function CreateTable() {
+
+            var rowLetters = ['A', 'B', ' C', 'D', 'E', 'F', 'G', 'H'];
+            var colNumbers = [8, 7, 8, 5, 4, 3, 2, 1];
+            var figureW1 = ['', '♖', '♘', '♗', '♕', '♔', '♗', '♘', '♖', ''];
+            var table = document.createElement("table"); // <table></table>
+
+
+
+
+            for (var i = 1; i <= 10; i++) {
+                var tr = document.createElement('tr');
+                table.appendChild(tr);
+
+
+                for (var j = 1, m = 0; j <= 10, m < 10; j++, m++) {
+                    var td = document.createElement('td');
+                    tr.appendChild(td);
+
+                    td.width = "50";
+                    td.height = '50';
+                    td.style.fontSize = '35px';
+                    td.align = 'center';
+                    if (i == 2) {
+                        td.innerHTML = figureW1[m];
+                        td.style.transform = 'rotate(180deg)';
+                    }
+                    if (i == 3 && j != 1 && j != 10) {
+                        td.innerHTML = '♙';
+                        td.style.transform = 'rotate(180deg)';
+                    }
+                    if (i == 9) {
+                        td.innerHTML = figureW1[m];
+                        td.style.color = 'white';
+                    }
+                    if (i == 8 && j != 1 && j != 10) {
+                        td.innerHTML = '♙';
+                        td.style.color = 'white';
+                    }
+                    if (i == 1 && j >= 2 && j <= 9) {
+                        td.innerHTML = rowLetters[m - 1];
+                        td.style.transform = 'rotate(180deg)';
+                    }
+                    if (i == 10 && j >= 2 && j <= 9) {
+                        td.innerHTML = rowLetters[m - 1];
+
+                    }
+                    if (j == 1 && i >= 2 && i <= 9) {
+                        td.innerHTML = colNumbers[i - 2];
+                        td.style.transform = 'rotate(0deg)';
+                        td.style.color = 'black';
+
+                    }
+                    if (j == 10 && i >= 2 && i <= 9) {
+                        td.innerHTML = colNumbers[i - 2];
+                        td.style.transform = 'rotate(180deg)';
+                        td.style.color = 'black';
+
+                    }
+
+                    if (i % 2 == 0 && i != 1 && i != 10 && j != 1 && j != 10) {
+                        if (j % 2 == 0) {
+                            td.style.backgroundColor = '#e8c09e';
+                            td.id = "change1";
+
+                        } else {
+                            td.style.backgroundColor = '#d47420';
+                            td.id = "change2";
+                        }
+
+                    } else if (i % 2 != 0 && i != 1 && i != 10 && j != 1 && j != 10) {
+                        if (j % 2 == 0) {
+                            td.style.backgroundColor = '#d47420';
+                            td.id = "change2";
+                        } else {
+                            td.style.backgroundColor = '#e8c09e';
+                            td.id = "change1";
+                        }
+
+                    }
+
+                }
+            }
+
+
+            document.body.append(table);
+
+
+        }
+
+        function ChangeColor() {
+            var change2 = document.querySelectorAll('#change2')
+            var change1 = document.querySelectorAll('#change1')
+            var r = Math.floor(Math.random() * (256));
+            var g = Math.floor(Math.random() * (256));
+            var b = Math.floor(Math.random() * (256));
+            var c = 'rgba(' + r + ',' + g + ',' + b;
+            console.log(c);
+            for (var i = 0; i < change2.length; i++) {
+                change2[i].style.backgroundColor = c + ',1)';
+            }
+            for (var i = 0; i < change1.length; i++) {
+
+
+                change1[i].style.backgroundColor = c + ',0.5)';
+                //change1[i].style.opacity = '0.5';
+            }
+
+        }
+    </script>
+
+    <button onclick="CreateTable()"> Создать шахматную доску </button>
+    <button onclick="ChangeColor()"> Сменить цвет </button><br><br><br>
+
+</body>
+
+</html>
