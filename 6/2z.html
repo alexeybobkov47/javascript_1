@@ -34,7 +34,10 @@
 </head>
 
 <body>
-    <div id='basket' class='top'></div>
+    <div id='basket' class='top'>
+        <h2>Корзина:</h2>
+        <div id='basket_cost_summ'></div>
+    </div>
     <div id='goods' class='mid'>
         <div class="goods-item"></div>
         <div class="goods-item"></div>
@@ -42,6 +45,59 @@
         <div class="goods-item"></div>
         <div class="goods-item"></div>
     </div>
+
+
+
+    <script>
+        function Random(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        var mas_items = document.getElementsByClassName('goods-item');
+        //console.log(mas_items);
+        for (i = 0; i < mas_items.length; i++) {
+            var cost = Random(1000, 5000);
+            mas_items[i].id = 'item_' + i;
+            mas_items[i].innerHTML = '<h3>Товар № ' + (i + 1) + '</h3><b>Цена: ' + cost + '</b><br>';
+
+            var button = document.createElement('button');
+            button.innerText = 'Купить';
+            button.name = "Товар №" + (i + 1);
+            button.value = cost;
+            mas_items[i].appendChild(button);
+        }
+        var basket_cost_summ = 0;
+        document.getElementById('basket_cost_summ').innerHTML = 'Сумма: ' + basket_cost_summ;
+
+        var basket_cost = document.querySelectorAll('button');
+
+        //console.log(basket_cost);
+
+        for (i = 0; i < basket_cost.length; i++) {
+            basket_cost[i].onclick = function() {
+                basket_cost_summ += parseInt(this.value);
+                document.getElementById('basket_cost_summ').innerHTML = 'Сумма: ' + basket_cost_summ;
+
+                var basket_item = document.createElement('div');
+                basket_item.id = 'basket_item_' + this.name.split('№')[1];
+                basket_item.className = 'basket_items';
+                basket_item.innerText = this.name + ', Цена: ' + this.value;
+
+                var button = document.createElement('button');
+                button.innerText = 'Удалить';
+                button.value = this.value;
+                button.onclick = function() {
+                    basket_cost_summ -= this.value;
+                    document.getElementById('basket_cost_summ').innerHTML = 'Сумма: ' + basket_cost_summ;
+                    document.getElementById(basket_item.id).remove(this);
+                }
+                basket_item.appendChild(button);
+                document.getElementById('basket').appendChild(basket_item);
+                //console.log(basket_cost_summ);
+
+            }
+        }
+    </script>
 </body>
 
 </html>
